@@ -9,6 +9,7 @@
   <a href="https://github.com/Rapptz/discord.py/">
       <img src="https://img.shields.io/badge/discord-py-blue.svg" alt="discord.py">
   </a>
+<a href="https://app.fossa.com/projects/git%2Bgithub.com%2FNotTacoz%2FTacoBot?ref=badge_shield" alt="FOSSA Status"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FNotTacoz%2FTacoBot.svg?type=shield"/></a>
 </p>
 
 ## What is TacoBOT
@@ -62,3 +63,7 @@ join the [Suppport Server](https://discord.io/Tacoz)
 - [TheDrone7](https://repl.it/talk/learn/) - discord.py reference
 - [AlexFlipnote](https://github.com/AlexFlipnote/discord_bot.py) - Learnt alot from this repo
 - [Dank Memer](https://dankmemer.lol/commands) - Inspiration for most of the commands
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FNotTacoz%2FTacoBot.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FNotTacoz%2FTacoBot?ref=badge_large)
