@@ -60,4 +60,4 @@
 ## Changelogs
 
 - v0.1 - First Log - 97 Commits.
-- v0.2 - Started Hypixel Cog ; Added more commands
+- v0.2 - Started Hypixel Cog ; Added more commands - 404 Commits
