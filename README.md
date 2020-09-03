@@ -32,7 +32,7 @@
   - Get somebody's discord stats
 
 - Utility!
-- Hypixel Stats!
+- Kawaii Animals!
 - Image Commands!
 
   - Subreddit Image Grabber
