@@ -9,7 +9,7 @@ from discord.ext import commands
 from discord.ext.commands import has_permissions, CheckFailure, Bot
 from datetime import timedelta
 
-footer = "Made with ❤️ by Tacoz!"
+footer = "『 TacoBot ✦ Tacoz 』"
 start_time = time.monotonic()
 
 
@@ -85,8 +85,9 @@ class Utility(commands.Cog):
                            inline=True)
         info_msg.add_field(
             name="Invite",
-            value=
-            "[Click Here](https://discord.com/api/oauth2/authorize?client_id=566193825874182164&permissions=8&scope=bot)",
+            value="Click Here",
+            url=
+            "https://discord.com/api/oauth2/authorize?client_id=566193825874182164&permissions=8&scope=bot",
             inline=True)
 
         info_msg.set_author(name="TacoBot",
