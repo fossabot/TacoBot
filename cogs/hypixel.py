@@ -457,7 +457,7 @@ class Hypixel(commands.Cog):
                 url=f"https://hypixel.net/player/{msg}",
             )
             solo.set_author(
-                name="Overall Bedwars Stats",
+                name="Solo Bedwars Stats",
                 icon_url="https://statsify.net/img/assets/hypixel/bedwars.png",
             )
             solo.add_field(name="Stars", value=f"``{bwlevel}☆``", inline=True)
@@ -497,7 +497,7 @@ class Hypixel(commands.Cog):
                 url=f"https://hypixel.net/player/{msg}",
             )
             doubles.set_author(
-                name="Overall Bedwars Stats",
+                name="Doubles Bedwars Stats",
                 icon_url="https://statsify.net/img/assets/hypixel/bedwars.png",
             )
             doubles.add_field(name="Stars", value=f"``{bwlevel}☆``", inline=True)
@@ -543,7 +543,7 @@ class Hypixel(commands.Cog):
                 url=f"https://hypixel.net/player/{msg}",
             )
             threes.set_author(
-                name="Overall Bedwars Stats",
+                name="Threes Bedwars Stats",
                 icon_url="https://statsify.net/img/assets/hypixel/bedwars.png",
             )
             threes.add_field(name="Stars", value=f"``{bwlevel}☆``", inline=True)
@@ -587,7 +587,7 @@ class Hypixel(commands.Cog):
                 url=f"https://hypixel.net/player/{msg}",
             )
             fours.set_author(
-                name="Overall Bedwars Stats",
+                name="Fours Bedwars Stats",
                 icon_url="https://statsify.net/img/assets/hypixel/bedwars.png",
             )
             fours.add_field(name="Stars", value=f"``{bwlevel}☆``", inline=True)
@@ -631,7 +631,7 @@ class Hypixel(commands.Cog):
                 url=f"https://hypixel.net/player/{msg}",
             )
             fours2.set_author(
-                name="Overall Bedwars Stats",
+                name="4v4 Bedwars Stats",
                 icon_url="https://statsify.net/img/assets/hypixel/bedwars.png",
             )
             fours2.add_field(name="Stars", value=f"``{bwlevel}☆``", inline=True)
@@ -697,18 +697,75 @@ class Hypixel(commands.Cog):
             embedVar.set_footer(text=footer)
 
             message = await ctx.send(embed=embedVar)
+            selected2 = 0
 
-            Left = await message.add_reaction("◀")
-            Right = await message.add_reaction("▶")
-            Stop = await message.add_reaction("⏹")
+            def checkselection(selected, parameter):
+                selected = selected + parameter
+                if selected > 5:
+                    selected2 = 0
+                elif selected < 0:
+                    selected2 = 5
 
-            start_time = time.time()  # remember when we started
-            while (time.time() - start_time) < 6.0:
-                pass
+            await message.add_reaction("◀")
+            await message.add_reaction("▶")
+            await message.add_reaction("⏹")
 
-            await message.clear_reaction("◀")
-            await message.clear_reaction("▶")
-            await message.clear_reaction("⏹")
+            def check(reaction, user):
+                return user == message.author and (
+                    str(reaction.emoji) == "◀"
+                    or str(reaction.emoji) == "▶"
+                    or str(reaction.emoji) == "⏹"
+                )
+
+            e = True
+
+            while e == True:
+                try:
+                    reaction1, user = await self.bot.wait_for(
+                        "reaction_add", timeout=60.0, check=check
+                    )
+                except asyncio.TimeoutError:
+                    e = False  # no reaction recieved, e is set to false
+                else:
+                    if reaction1 == "◀":
+                        checkselection(selected2, -1)
+                        if selected2 == 0:
+                            await message.edit(content=embedVar)
+                        elif selected2 == 1:
+                            await message.edit(content=solo)
+                        elif selected2 == 2:
+                            await message.edit(content=doubles)
+                        elif selected2 == 3:
+                            await message.edit(content=threes)
+                        elif selected2 == 4:
+                            await message.edit(content=fours)
+                        elif selected2 == 5:
+                            await message.edit(content=fours2)
+                        else:
+                            pass
+                        await message.remove_reaction("◀", user)
+                    elif reaction1 == "▶":
+                        checkselection(selected2, +1)
+                        if selected2 == 0:
+                            await message.edit(content=embedVar)
+                        elif selected2 == 1:
+                            await message.edit(content=solo)
+                        elif selected2 == 2:
+                            await message.edit(content=doubles)
+                        elif selected2 == 3:
+                            await message.edit(content=threes)
+                        elif selected2 == 4:
+                            await message.edit(content=fours)
+                        elif selected2 == 5:
+                            await message.edit(content=fours2)
+                        else:
+                            pass
+                        await message.remove_reaction("▶", user)
+                    elif reaction1 == "⏹":
+                        e = False
+                        break
+
+            await message.clear_reactions()
 
     @bedwars.error
     async def bedwars_error(self, ctx, error):
